@@ -3,12 +3,17 @@
 import os
 import joblib
 from app.models import EmailToWordCounterTransformer, WordCounterToVectorTransformer
-
+import __main__ as _main
 # Path to the saved pipeline + classifier
 MODEL_FILENAME = os.path.join(os.path.dirname(__file__), "..", "spam_model.pkl")
 
+_main.EmailToWordCounterTransformer = EmailToWordCounterTransformer
+_main.WordCounterToVectorTransformer = WordCounterToVectorTransformer
+
 # Load pipeline and classifier
-pipeline, classifier = joblib.load(MODEL_FILENAME)
+model_data = joblib.load(MODEL_FILENAME)
+pipeline = model_data["preprocess_pipeline"]
+classifier = model_data["classifier"]
 
 def predict_email(text: str, subject: str = None):
     """
