@@ -1,4 +1,3 @@
----
 
 # Spam Email Classification with Logistic Regression — Full-Stack App
 
