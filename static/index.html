@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Spam Classifier</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .bar-bg {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 77, 77, 0.95),
+          rgba(255, 142, 86, 0.95)
+        );
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-slate-50 to-sky-50 min-h-screen flex items-start justify-center py-12"
+  >
+    <div class="w-full max-w-3xl mx-auto px-4">
+      <div
+        class="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200 overflow-hidden"
+      >
+        <header class="px-6 py-6 flex items-center justify-between">
+          <div>
+            <h1
+              class="text-2xl font-semibold text-slate-800 flex items-center gap-3"
+            >
+              <svg
+                class="w-8 h-8 text-rose-500"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 8.5C3 6.01472 5.01472 4 7.5 4H16.5C18.9853 4 21 6.01472 21 8.5V15.5C21 17.9853 18.9853 20 16.5 20H7.5C5.01472 20 3 17.9853 3 15.5V8.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 11L10.5 13.5L16 8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Spam Classifier
+            </h1>
+            <p class="text-sm text-slate-500 mt-1">
+              Paste an email and get a spam prediction with confidence.
+            </p>
+          </div>
+          <div class="text-sm text-slate-500">
+            Local server:
+            <span class="font-medium text-slate-700">/predict</span>
+          </div>
+        </header>
+
+        <main class="px-6 pb-6">
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="md:col-span-2">
+              <label class="text-sm font-medium text-slate-700"
+                >Subject (optional)</label
+              >
+              <input
+                id="subject"
+                type="text"
+                placeholder="Email subject"
+                class="mt-2 mb-3 w-full rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-300"
+              />
+              <label class="text-sm font-medium text-slate-700">Body</label>
+              <textarea
+                id="body"
+                placeholder="Paste the raw email body here..."
+                class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-3 font-mono h-48 resize-vertical focus:outline-none focus:ring-2 focus:ring-sky-300"
+              ></textarea>
+              <div class="flex items-center gap-3 mt-4">
+                <button
+                  id="check"
+                  class="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg shadow"
+                >
+                  Check
+                </button>
+                <div class="flex gap-2">
+                  <button
+                    class="load-sample px-3 py-2 rounded-lg border border-slate-200 text-sm hover:bg-slate-50"
+                    data-sample="spam"
+                  >
+                    Load Hard Spam
+                  </button>
+                  <button
+                    class="load-sample px-3 py-2 rounded-lg border border-slate-200 text-sm hover:bg-slate-50"
+                    data-sample="tricky"
+                  >
+                    Load Tricky Ham
+                  </button>
+                  <button
+                    class="load-sample px-3 py-2 rounded-lg border border-slate-200 text-sm hover:bg-slate-50"
+                    data-sample="ham"
+                  >
+                    Load Simple Ham
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <aside
+              class="md:col-span-1 p-4 rounded-lg border border-slate-100 bg-gradient-to-b from-white to-slate-50"
+            >
+              <h3 class="text-sm font-semibold text-slate-700">Result</h3>
+              <div id="out" class="mt-3 space-y-3">
+                <div
+                  id="statusBox"
+                  class="rounded-lg p-3 bg-slate-50 border border-slate-100 text-slate-600 text-sm"
+                >
+                  No prediction yet — paste an email and click
+                  <strong>Check</strong>.
+                </div>
+                <div id="probWrapper" class="hidden">
+                  <div
+                    class="flex items-center justify-between text-xs text-slate-500"
+                  >
+                    <div>Spam confidence</div>
+                    <div id="probText" class="font-medium text-slate-700">
+                      0%
+                    </div>
+                  </div>
+                  <div
+                    class="mt-2 w-full bg-slate-200 rounded-full h-3 overflow-hidden"
+                  >
+                    <div
+                      id="probBar"
+                      class="h-full w-0 bar-bg rounded-full transition-all"
+                    ></div>
+                  </div>
+                </div>
+                <div id="explain" class="text-xs text-slate-500 hidden">
+                  Model details unavailable locally.
+                </div>
+              </div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
