@@ -1,5 +1,3 @@
-Add a deployment and full-stack note at the top and include the Docker link placeholder:
-
 ---
 
 # Spam Email Classification with Logistic Regression — Full-Stack App
