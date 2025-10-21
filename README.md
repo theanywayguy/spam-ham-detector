@@ -2,7 +2,7 @@
 # Spam Email Classification with Logistic Regression — Full-Stack App
 
 This project has been converted into a **simple full-stack web application** with a FastAPI backend and a Tailwind-based front-end. The app is **dockerized for easy deployment**.
-Access the live app here: `<place holder>`
+Access the live app here: `(https://spam-detector-wxce.onrender.com/)`
 
 ---
 
@@ -180,4 +180,4 @@ P(spam) = sigmoid(-2.0 + bias) ≈ low → classified as ham
 
 **Outcome:** A classical ML spam classifier using **bag-of-words features**, logistic regression, and shared vocabulary with learned word weights, capable of distinguishing ham and spam based on word patterns, now **available as a full-stack web app with Docker deployment**.
 
-**Live demo link:** `<place holder>`
+**Live demo link:** `(https://spam-detector-wxce.onrender.com/)`
