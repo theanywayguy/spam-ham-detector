@@ -1,40 +1,25 @@
 // sample payloads
 const SAMPLES = {
   spam: {
-    subject: "URGENT: Your account will be SUSPENDED — Verify Immediately",
-    body: `Dear Customer,
-
-We detected suspicious activity on your account and will suspend access within 24 hours unless you verify your identity. Click the secure link below NOW to confirm your account details and avoid permanent suspension:
-
-https://secure-verify-now.example/confirm?id=9f8b7c
-
-If you do not verify within 24 hours, all your files and subscriptions will be lost. 
-Call our support team immediately if you have trouble: +1 (800) 555-0199 (available 24/7).
-
-Thank you for your prompt attention,
-Account Security Team`,
+    subject: "Win a FREE iPhone now!",
+    body: `Congratulations! You have been selected to win a brand new iPhone. 
+Click the link below to claim your prize before it expires: 
+http://fake-prize-link.com`
   },
-  tricky: {
-    subject: "Free Lunch Tomorrow!",
-    body: `Hi team,
+tricky: {
+  subject: "Reminder: Company lunch tomorrow",
+  body: `Hello team,
 
-Don't forget, tomorrow’s company all-hands includes a free catered lunch in the cafeteria starting at 12:30pm. 
-Please RSVP so we can get an accurate headcount. 
-
-See you there!
-— HR`,
-  },
+Don't forget the company lunch tomorrow at 12:30pm in the cafeteria.
+Please RSVP to confirm attendance.`
+},
   ham: {
-    subject: "Meeting tomorrow at 10am",
-    body: `Hi team,
-
-Just a reminder that we have our weekly project meeting tomorrow at 10am in the main conference room.
-Please bring your updates so we can stay on track.
-
-Thanks,
-Alice`,
-  },
+    subject: "Lunch plans?",
+    body: `Hey,
+Are we still on for lunch tomorrow at noon? Let me know.`
+  }
 };
+
 
 function setStatus(message, kind = "neutral") {
   const statusBox = document.getElementById("statusBox");

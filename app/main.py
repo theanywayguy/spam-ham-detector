@@ -2,10 +2,15 @@
 
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from app.predictor import predict_email
 import os
 
 app = FastAPI(title="Spam Classifier")
+
+
+# Mount the static folder
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Serve the static frontend page
 @app.get("/", response_class=HTMLResponse)

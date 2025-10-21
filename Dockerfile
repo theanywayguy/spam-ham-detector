@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy app and static folders, and the model
 COPY app ./app
 COPY static ./static
-COPY spam_model.pkl .
+COPY spam_classifier.pkl .
 
 # Expose the port FastAPI will run on
 EXPOSE 8000
